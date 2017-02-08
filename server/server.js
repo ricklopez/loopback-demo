@@ -5,6 +5,11 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+app.use('/express-status', function(req, res, next) {
+  res.json({ running: true});
+});
+
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
@@ -17,6 +22,7 @@ app.start = function() {
     }
   });
 };
+
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
